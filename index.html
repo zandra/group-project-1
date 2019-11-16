@@ -25,7 +25,52 @@
         <div class="header">
             <h1>munchi</h1>
         </div>
-
+        <div class="SearchCriteria">
+            <form>
+                <!--I added a searchbox to the map page so that if the user changes
+                their mind on what they feel like eating they can just run a search
+                without going back to the landing page-->
+                <div id="StarterSearch">
+                    What do you feel like eating?
+                    <input type="text" id="FoodSearch" placeholder="What're you craving?">
+                    Whereabouts do you want to eat?
+                    <input type="text" id="Location">
+                    <input type="submit" id="SearchBtn">
+                </div>
+                <hr>
+                <!--Just some basic html for the filters, needs to be changed later to actual filters-->
+                <ul id="Search Filters">
+                    <button id="Filter1">Price</button>
+                    <button id="Filter2">Availability</button>
+                    <button id="Filter3">Other criteria</button>
+                    <button id="OtherFilters">The rest of the filters</button>
+                </ul>
+                <!--The below are the expanded filter boxes, we can display:none these
+                and use JS to make the right one appear upon click of the corresponding buttons or something-->
+                <div id="Filter1Addon">
+                    How much are you willing to spend?
+                    <button id="PriceLow" class="PriceBtn">$</button>
+                    <button id="PriceMed" class="PriceBtn">$$</button>
+                    <button id="PriceHigh" class="PriceBtn">$$$</button>
+                    <button id="PriceVeryHigh" class="PriceBtn">$$$$</button>
+                </div>
+                <div id="Filter2Addon">
+                    When are you going?
+                    <br>
+                    <button id="EatNowBtn">Now</button>
+                    <br>
+                    Later: <input type="time" id="RequestedHours">
+                    <br>
+                    <button id="All-dayEats">24 Hour Eats</button>
+                </div>
+                <div id="Filter3Addon">
+                    <!--fill out when we get a clearer image of filter options-->
+                </div>
+                <div id="AllFilterOptions">
+                    <!--Add filter options here-->
+                </div>
+            </form>
+        </div>
         <div class="map-section">
                 <div id="mapid">
 
