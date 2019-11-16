@@ -1,0 +1,15 @@
+.header {
+  padding: 60px;
+  text-align: center, top;
+  background: #1abc9c;
+  color: whitesmoke;
+  font-size: 30px;
+  height:100px;
+  
+}
+
+#mapid { 
+    height: 500px; 
+    position: absolute; 
+    bottom:0; right:0; left:0;
+}
