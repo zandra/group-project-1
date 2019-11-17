@@ -78,7 +78,30 @@
         </div>
 
     </div>
-<script type="text/javascript" src="logic.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="logic.js"></script>
+    <script>
+
+        // Yelp API request 
+        // TODO We should really figure out how to extract and store these keys instead of having to commit them 
+        const token = 'Bearer ERyByTkumJyy5HXbiMBTukTvSxjGzdWa6mo9HtSNsxWXK_bvwvbGeSMCfNWObo18bChYAF_p4-UpQvr1ye20KqWLiFdgRTVJ9bqWSlBOU6p8U4Yo-286thb_vGbQXXYx';
+        const cors_url = 'https://cors-anywhere.herokuapp.com';
+        const yelp_search_url = 'https://api.yelp.com/v3/businesses/search';
+
+        let searchTerm = 'restaurants';
+        let searchLocation = '78722';
+
+        $.ajax({
+            url: cors_url + '/' + yelp_search_url,
+            data: {term: searchTerm, location: searchLocation},
+            headers: {'Authorization': token},
+            method: 'GET'
+        }).then(function(response) {
+            console.log(response);
+        })
+
+
+    </script>
 </body>
 
 </html>
