@@ -4,12 +4,76 @@
   background: #1abc9c;
   color: whitesmoke;
   font-size: 30px;
-  height:100px;
-  
+  height: 100px;
 }
 
-#mapid { 
-    height: 500px; 
-    position: absolute; 
-    bottom:0; right:0; left:0;
+#mapid {
+  height: 500px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+body {
+  background-image: url(./assets/images/AustinSkyline.jpg);
+  background-size: cover;
+}
+
+.login {
+  text-align: right;
+  padding: 20px 0 0 0;
+}
+
+.loginLink, .signUpLink {
+  display: inline;
+  color: #18bc9d;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.signUpLink {
+  padding: 0 0 0 20px;
+}
+
+.munchi-intro {
+  background-color: #71db77;
+  color: white;
+  font-weight: bold;
+  width: 50%;
+  text-align: center;
+  margin-top: 200px;
+  border-radius: 20px;
+}
+
+.munchiRow {
+  padding: 30px 20px;
+}
+
+.munchi-input {
+  margin: 50px 0 0 0;
+}
+
+img {
+  width: 300px;
+  float: left;
+}
+
+label {
+  color: white;
+  font-size: 20px;
+  top: 20px;
+}
+
+input {
+  background-color: white !important;
+  border-radius: 20px !important;
+  text-align: center;
+  margin: 15px 0 0 0 !important;
+  font-size: 20px !important;
+}
+
+a {
+  font-size: 25px;
+  color: #18bc9d;
 }
