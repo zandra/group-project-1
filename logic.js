@@ -18,8 +18,11 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 //If you move it to different lines of code it can change if it even works or the map populates
 function onMapClick(e) {
     alert("You clicked the map at " + e.latlng);
+    console.log(e.latlng);
 }
 mymap.on('click', onMapClick);
+
+
 
 // this adds the blue marker to the map or on an iPhone we call a "dropping a pin"
 var marker = L.marker([30.26986, -97.743212]).addTo(mymap);
@@ -61,6 +64,15 @@ var popup = L.popup()
 
 
 
+
+// Now figure out how you will use API return to put pins on the map of each restaurant
+    // 1) take the response and console.log response and get a few pieces of data from API
+    // 2) Then create a function for creating pins based on location 
+        // probably will need a for loop here to run over response object and create pins for all place in the array
+
+
+
+    
 // NOTES
 // =======================================================
 //

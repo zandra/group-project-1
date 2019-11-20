@@ -108,6 +108,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="logic.js"></script>
     <script>
+        
 
         // Yelp API request 
         // TODO We should really figure out how to extract and store these keys instead of having to commit them 
@@ -125,17 +126,54 @@
     var instances = M.Collapsible.init(elems, options);
   });
 
-        // $.ajax({
-        //     url: cors_url + '/' + yelp_search_url,
-        //     data: {term: searchTerm, location: searchLocation},
-        //     headers: {'Authorization': token},
-        //     method: 'GET'
-        // }).then(function(response) {
-        //     // console.log(response);
-        // })
+    // this is a function that should run whenever a restaurant is searched 
+    // will need to figure out how we take search terms and use them for the Yelp API (by alias, address etc.?)    
+    // function getFoodLocation (){
+        
+        $.ajax({
+            url: cors_url + '/' + yelp_search_url,
+            data: {term: searchTerm, location: searchLocation},
+            headers: {'Authorization': token},
+            method: 'GET'
+        }).then(function(response) {
 
+            // this will log the object that returns from the API request
+            console.log(response);
 
+            // this for loop runs over the 'businesses' array and creates a 'marker' on the map for each restaurant
+            for (var i = 0; i < response.businesses.length; i++){
+
+                // this variable is to grab the long and lat from the object that returns from the AJAX request
+                var foodLocation = L.marker([response.businesses[i].coordinates.latitude, response.businesses[i].coordinates.longitude]).addTo(mymap);
+                foodLocation.bindPopup(
+                `${response.businesses[i].alias}<br>
+                ${response.businesses[i].display_phone}<br>
+                ${response.businesses[i].rating}<br>
+                ${response.businesses[i].transactions}<br>
+                ${response.businesses[i].categories[0].alias}<br>
+                ${response.businesses[i].is_closed}<br>
+               
+                `
+                
+                // if (response.businesses[i].is_closed === true) {
+                //     `open`
+                // } else {
+                //     `closed`
+                // }
+                
+                ).openPopup();
+            
+            };
+           
+        })
+      
+//       });
+
+    
+
+  
     </script>
 </body>
 
 </html>
+
