@@ -13,6 +13,8 @@
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
         crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <!-- Have to request a 'mapbox token to use this for leaflet' -->
     <!-- UN: jyonge -->
     <!-- PW: christian1! -->
@@ -21,76 +23,108 @@
 </head>
 
 <body>
+    <div class="header teal accent-3 col s12">
+        <h1 class="white-text center-align">munchi</h1>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <h1>munchi</h1>
-        </div>
         <div class="SearchCriteria">
             <form>
-                <!--I added a searchbox to the map page so that if the user changes
-                their mind on what they feel like eating they can just run a search
-                without going back to the landing page-->
                 <div id="StarterSearch">
-                    What do you feel like eating?
-                    <input type="text" id="FoodSearch" placeholder="What're you craving?">
-                    Whereabouts do you want to eat?
-                    <input type="text" id="Location">
+                    <div class="input-field col s3 Searchbars">
+                        <label for="Food_Search">What do you feel like eating?</label>
+                        <input type="text" id="FoodSearch">
+                    </div>
+                    <div class="input-field col s3 Searchbars">
+                        <label for="Location">Whereabouts do you want to eat?</label>
+                        <input type="text" id="Location">
+                    </div>
                     <input type="submit" id="SearchBtn">
-                </div>
                 <hr>
-                <!--Just some basic html for the filters, needs to be changed later to actual filters-->
+                <!-- Just some basic html for the filters, needs to be changed later to actual filters -->
                 <ul id="Search Filters">
-                    <button id="Filter1">Price</button>
-                    <button id="Filter2">Availability</button>
-                    <button id="Filter3">Other criteria</button>
-                    <button id="OtherFilters">The rest of the filters</button>
-                </ul>
-                <!--The below are the expanded filter boxes, we can display:none these
-                and use JS to make the right one appear upon click of the corresponding buttons or something-->
-                <div id="Filter1Addon">
-                    How much are you willing to spend?
-                    <button id="PriceLow" class="PriceBtn">$</button>
-                    <button id="PriceMed" class="PriceBtn">$$</button>
-                    <button id="PriceHigh" class="PriceBtn">$$$</button>
-                    <button id="PriceVeryHigh" class="PriceBtn">$$$$</button>
-                </div>
-                <div id="Filter2Addon">
-                    When are you going?
-                    <br>
-                    <button id="EatNowBtn">Now</button>
-                    <br>
-                    Later: <input type="time" id="RequestedHours">
-                    <br>
-                    <button id="All-dayEats">24 Hour Eats</button>
-                </div>
-                <div id="Filter3Addon">
-                    <!--fill out when we get a clearer image of filter options-->
-                </div>
-                <div id="AllFilterOptions">
-                    <!--Add filter options here-->
-                </div>
+                    <li>
+                        <div class="collapsible-header">Price</div>
+                        <div class="collapsible-body">
+                            <span>
+                                <div id="Filter1Addon">
+                                    How much are you willing to spend?
+                                    <button id="PriceLow" class="PriceBtn">$</button>
+                                    <button id="PriceMed" class="PriceBtn">$$</button>
+                                    <button id="PriceHigh" class="PriceBtn">$$$</button>
+                                    <button id="PriceVeryHigh" class="PriceBtn">$$$$</button>
+                                </div>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Availability</div>
+                        <div class="collapsible-body">
+                            <span>
+                                <div id="Filter2Addon">
+                                    When are you going?
+                                    <br>
+                                    <button id="EatNowBtn">Now</button>
+                                    <br>
+                                    Later: <input type="time" id="RequestedHours">
+                                    <br>
+                                    <button id="All-dayEats">24 Hour Eats</button>
+                                </div>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Other Criteria</div>
+                        <div class="collapsible-body">
+                            <span>
+                                <div id="Filter3Addon">
+                                    3rd filter option goes here
+                                    fill out when we get a clearer image of filter options
+                                </div>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">The rest of the filters</div>
+                        <div class="collapsible-body">
+                            <span>
+                                <div id="AllFilterOptions">
+                                    Put the rest of the filters
+                                </div>
+                            </span>
+                        </div>
+                    </li>
+                
             </form>
         </div>
-        <div class="map-section">
+        <!-- <div class="map-section">
                 <div id="mapid">
 
                 </div>
-        </div>
+        </div> -->
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="logic.js"></script>
     <script>
         
 
         // Yelp API request 
         // TODO We should really figure out how to extract and store these keys instead of having to commit them 
-        const token = 'Bearer ERyByTkumJyy5HXbiMBTukTvSxjGzdWa6mo9HtSNsxWXK_bvwvbGeSMCfNWObo18bChYAF_p4-UpQvr1ye20KqWLiFdgRTVJ9bqWSlBOU6p8U4Yo-286thb_vGbQXXYx';
-        const cors_url = 'https://cors-anywhere.herokuapp.com';
-        const yelp_search_url = 'https://api.yelp.com/v3/businesses/search';
 
-        let searchTerm = 'restaurants';
-        let searchLocation = '78722';
+        //when done with styling un comment out the lines below
+
+        // const token = 'Bearer ERyByTkumJyy5HXbiMBTukTvSxjGzdWa6mo9HtSNsxWXK_bvwvbGeSMCfNWObo18bChYAF_p4-UpQvr1ye20KqWLiFdgRTVJ9bqWSlBOU6p8U4Yo-286thb_vGbQXXYx';
+        // const cors_url = 'https://cors-anywhere.herokuapp.com';
+        // const yelp_search_url = 'https://api.yelp.com/v3/businesses/search';
+        // let searchTerm = 'restaurants';
+        // let searchLocation = '78722';
+
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
 
     // this is a function that should run whenever a restaurant is searched 
     // will need to figure out how we take search terms and use them for the Yelp API (by alias, address etc.?)    

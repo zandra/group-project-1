@@ -1,4 +1,14 @@
 .header {
+
+  height:100px;
+  display: flex;
+  position: relative;
+  top: 0px;
+}
+
+.Searchbars {
+  display: inline-block;
+  width: 33%
   padding: 60px;
   text-align: center, top;
   background: #1abc9c;
