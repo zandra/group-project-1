@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- this is Leaflet's CSS file -->
-    <link rel='icon' href='src/images/favicon.ico' sizes="180x180" type='image/x-icon' />
-    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin="" />
@@ -17,32 +15,19 @@
         crossorigin=""></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
- 
-    <link rel="stylesheet" href="src/css/style.css">
+    <!-- Have to request a 'mapbox token to use this for leaflet' -->
+    <!-- UN: jyonge -->
+    <!-- PW: christian1! -->
+    <!-- Token: "pk.eyJ1IjoianlvbmdlIiwiYSI6ImNrMzFzOTJhOTAzczUzbG9iNzJkbThqNGgifQ.P8qxxnXrweFPSDAk0myObw" -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-        <div class="bg-image"></div>
-        <div class="container login">
-          <h4 class="loginLink">LOGIN</h4>
-          <h4 class="signUpLink">SIGN UP</h4>
-        </div>
-        <div class="container munchi-intro">
-          <div class="row munchiRow">
-            <div class="col s5">
-              <img src="src/images/munchi-logo3.png" alt="munchi-logo">
-            </div>
-            <div class="col s7 munchi-input">
-              <label>Enter zip or restaurant name:</label>
-              <input id="zipInput">
-              <h4>OR</h4>
-              <a href="#" id="currentLocation">Current Location</a>
-            </div>
-          </div>
-      
-        </div>
-        
-    <div class="container search"> 
+    <div class="header teal accent-3 col s12">
+        <h1 class="white-text center-align">munchi</h1>
+    </div>
+
+    <div class="container">
         <div class="SearchCriteria">
             <form>
                 <div id="StarterSearch">
@@ -56,6 +41,7 @@
                     </div>
                     <input type="submit" id="SearchBtn">
                 <hr>
+                <!-- Just some basic html for the filters, needs to be changed later to actual filters -->
                 <ul id="Search Filters">
                     <li>
                         <div class="collapsible-header">Price</div>
@@ -111,16 +97,82 @@
                 
             </form>
         </div>
-    </div> 
- <!-- end of search-container -->
-    
+        <!-- <div class="map-section">
+                <div id="mapid">
+
+                </div>
+        </div> -->
+
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type='text/javascript' src='src/js/app.js'></script>
-    <script type='text/javascript' src='src/js/landing.js'></script>
-    <script type="text/javascript" src='src/js/results.js'></script>
-    <script type="text/javascript" src='src/js/response.js'></script>
-    <script type="text/javascript" src="src/js/logic.js"></script>
+    <script type="text/javascript" src="logic.js"></script>
+    <script>
+        
+
+        // Yelp API request 
+        // TODO We should really figure out how to extract and store these keys instead of having to commit them 
+
+        //when done with styling un comment out the lines below
+
+        // const token = 'Bearer ERyByTkumJyy5HXbiMBTukTvSxjGzdWa6mo9HtSNsxWXK_bvwvbGeSMCfNWObo18bChYAF_p4-UpQvr1ye20KqWLiFdgRTVJ9bqWSlBOU6p8U4Yo-286thb_vGbQXXYx';
+        // const cors_url = 'https://cors-anywhere.herokuapp.com';
+        // const yelp_search_url = 'https://api.yelp.com/v3/businesses/search';
+        // let searchTerm = 'restaurants';
+        // let searchLocation = '78722';
+
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
+
+    // this is a function that should run whenever a restaurant is searched 
+    // will need to figure out how we take search terms and use them for the Yelp API (by alias, address etc.?)    
+    // function getFoodLocation (){
+        
+        $.ajax({
+            url: cors_url + '/' + yelp_search_url,
+            data: {term: searchTerm, location: searchLocation},
+            headers: {'Authorization': token},
+            method: 'GET'
+        }).then(function(response) {
+
+            // this will log the object that returns from the API request
+            console.log(response);
+
+            // this for loop runs over the 'businesses' array and creates a 'marker' on the map for each restaurant
+            for (var i = 0; i < response.businesses.length; i++){
+
+                // this variable is to grab the long and lat from the object that returns from the AJAX request
+                var foodLocation = L.marker([response.businesses[i].coordinates.latitude, response.businesses[i].coordinates.longitude]).addTo(mymap);
+                foodLocation.bindPopup(
+                `${response.businesses[i].alias}<br>
+                ${response.businesses[i].display_phone}<br>
+                ${response.businesses[i].rating}<br>
+                ${response.businesses[i].transactions}<br>
+                ${response.businesses[i].categories[0].alias}<br>
+                ${response.businesses[i].is_closed}<br>
+               
+                `
+                
+                // if (response.businesses[i].is_closed === true) {
+                //     `open`
+                // } else {
+                //     `closed`
+                // }
+                
+                ).openPopup();
+            
+            };
+           
+        })
+      
+//       });
+
+    
+
+  
+    </script>
 </body>
 
 </html>
