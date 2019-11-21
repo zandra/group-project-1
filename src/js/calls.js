@@ -22,22 +22,22 @@ var Calls = (function () {
       // let searchLocation = '78722';
 
 
-      $.ajax({
-        url:  'https://cors-anywhere.herokuapp.com/' + yelp_business_search_url,
-        // data: {
-        //   term: searchTerm,
-        //   location: searchLocation,
-        //   longitude: longitude,
-        //   latitude: latitude
-        // },
-        headers: {
-          'Authorization': auth1,
-          'Access-Control-Allow-Origin': '*'
-        },
-        method: 'GET'
-      }).then(function (response){
-        console.log(response);
-      });
+      // $.ajax({
+      //   url:  'https://cors-anywhere.herokuapp.com/' + yelp_business_search_url,
+      //   // data: {
+      //   //   term: searchTerm,
+      //   //   location: searchLocation,
+      //   //   longitude: longitude,
+      //   //   latitude: latitude
+      //   // },
+      //   headers: {
+      //     'Authorization': auth1,
+      //     'Access-Control-Allow-Origin': '*'
+      //   },
+      //   method: 'GET'
+      // }).then(function (response){
+      //   console.log(response);
+      // });
 
     }
 

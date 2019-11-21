@@ -24,17 +24,13 @@ var Landing = (function() {
             const searchTerms = DOM.$zip.val().trim();
             console.log(searchTerms);
             Calls.yelpBusinessSearch();
-          }
-        });
+          };
+          
+          DOM.$zip.on('click', function(){
+            // Mapi.mapMe2(response.businesses);
+          });
 
-        // DOM.$zip.on('click', function(){
-
-
-          // split the search terms
-          // Calls.yelpBusinessSearch('coffee', '78746');
-          // Calls.yelpBusinessMatch("WavvLdfdP6g8aZTtbBQHTw");
-        // });
-
+        })
       }
 
         function getLocation() {
