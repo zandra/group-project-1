@@ -46,32 +46,39 @@
 
         </div>
 
-    <!-- <div class="container search">
+    <!-- below code is what needs to be dynamically added so that the map module can have search bars, headers, and filters.
+        Put here so that it is somewhere accessible
+
+    <div class="header teal accent-3 col s12">
+        <h1 class="white-text center-align">munchi</h1>
+    </div>
+
+    <div class="row">
         <div class="SearchCriteria">
             <form>
                 <div id="StarterSearch">
-                    <div class="input-field col s3 Searchbars">
+                    <div class="input-field Searchbars">
                         <label for="Food_Search">What do you feel like eating?</label>
                         <input type="text" id="FoodSearch">
                     </div>
-                    <div class="input-field col s3 Searchbars">
+                    <div class="input-field Searchbars">
                         <label for="Location">Whereabouts do you want to eat?</label>
                         <input type="text" id="Location">
                     </div>
                     <input type="submit" id="SearchBtn">
                 <hr>
-                <ul id="Search Filters">
+
+                <ul id="Search Filters" class="collapsible">
                     <li>
                         <div class="collapsible-header">Price</div>
                         <div class="collapsible-body">
                             <span>
-                                <div id="Filter1Addon">
-                                    How much are you willing to spend?
-                                    <button id="PriceLow" class="PriceBtn">$</button>
-                                    <button id="PriceMed" class="PriceBtn">$$</button>
-                                    <button id="PriceHigh" class="PriceBtn">$$$</button>
-                                    <button id="PriceVeryHigh" class="PriceBtn">$$$$</button>
-                                </div>
+                                How much are you willing to spend?
+                                <br>
+                                <a class="waves-effect waves-light btn">$</a>
+                                <a class="waves-effect waves-light btn">$$</a>
+                                <a class="waves-effect waves-light btn">$$$</a>
+                                <a class="waves-effect waves-light btn">$$$$</a>
                             </span>
                         </div>
                     </li>
@@ -84,7 +91,7 @@
                                     <br>
                                     <button id="EatNowBtn">Now</button>
                                     <br>
-                                    Later: <input type="time" id="RequestedHours">
+                                    Later:   <input type="text" class="timepicker">
                                     <br>
                                     <button id="All-dayEats">24 Hour Eats</button>
                                 </div>
@@ -92,7 +99,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header">Other Criteria</div>
+                        <div class="collapsible-header">Other</div>
                         <div class="collapsible-body">
                             <span>
                                 <div id="Filter3Addon">
@@ -112,10 +119,15 @@
                             </span>
                         </div>
                     </li>
-
+                </ul>
             </form>
         </div>
-    </div>  -->
+        <div class="map-section">
+            <div id="mapid">
+            </div>
+        </div>
+    </div>
+    -->
  <!-- end of search-container -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
