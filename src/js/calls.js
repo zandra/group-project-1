@@ -16,7 +16,7 @@ var Calls = (function () {
     }
 
     function yelpBusinessSearch() {
-      var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search?term=food&location=78726';
+      var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search?term=food&location=East 23rd Street Austin, TX';
       var auth1 = token;
       // let searchTerm = DOM.$searchLocation;
       // let searchLocation = '78722';

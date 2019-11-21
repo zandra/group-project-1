@@ -59,7 +59,7 @@ body {
 }
 
 .munchi-intro {
-  background-color: #71db77;
+  background-image: linear-gradient(#71db77,#71db77,white);
   color: white;
   font-weight: bold;
   width: 50%;
@@ -73,7 +73,7 @@ body {
 }
 
 .munchi-input {
-  margin: 50px 0 0 0;
+  margin: 25px 0 0 0;
 }
 
 img {
@@ -98,4 +98,25 @@ input {
 a {
   font-size: 25px;
   color: #18bc9d;
+}
+
+.whereAboutsLabel {
+  margin-top: 20px;
+}
+
+#orLabel {
+  margin: 5px 0;
+  padding-right: 20px;
+}
+
+#currentLocation {
+  font-size: 20px;
+}
+
+#orLabel,#currentLocation {
+  display: inline-block;
+}
+
+#zipInput,#landingSubmit {
+  display: inline-block;
 }

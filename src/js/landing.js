@@ -39,6 +39,9 @@ var Landing = (function() {
 
         function getLocation() {
 
+          var openCageDataAPIKey = '3b1b0a05260b4c9aa16e12351315a923';
+          var openCageDataURL = 'https://api.opencagedata.com/geocode/v1/json?q=LAT+LNG&key=3b1b0a05260b4c9aa16e12351315a923';
+
           $('#currentLocation').on('click', function(){
 
             // from https://medium.com/better-programming/how-to-detect-the-location-of-your-websites-visitor-using-javascript-92f9e91c095f
@@ -46,9 +49,23 @@ var Landing = (function() {
               // check if geolocation is supported/enabled on current browser
               navigator.geolocation.getCurrentPosition(
                function success(position) {
+                 let latitude = position.coords.latitude;
+                 let longitude = position.coords.longitude;
+
                  // for when getting location is a success
-                 console.log('latitude', position.coords.latitude,
-                             'longitude', position.coords.longitude);
+                 // console.log('latitude', latitude, 'longitude', longitude);
+
+                 $.ajax({
+                   url: `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=3b1b0a05260b4c9aa16e12351315a923`,
+                   method: 'GET'
+                 }).then(function(data){
+                   const currentAddress = data.results[0].components.road;
+                   const currentCity = data.results[0].components.city;
+                   const currentState = data.results[0].components.state_code;
+                   // console.log(data);
+                   //When user clicks on #currentLocation, geolocated city and state displays in #zipInput input
+                   $('#zipInput').val(currentAddress+' '+currentCity+', '+currentState);
+                 });
                 // Calls.yelpBusinessSearch(searchTerms, latitude=position.coords.latitude, );
                 },
                 function error(error_message) {
