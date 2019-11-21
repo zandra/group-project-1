@@ -21,21 +21,16 @@ var Results = (function () {
 
         // this variable is to grab the long and lat from the object that returns from the AJAX request
         var foodLocation = L.marker([response.businesses[i].coordinates.latitude, response.businesses[i].coordinates.longitude]).addTo(mymap);
-        foodLocation.bindPopup(
-          `${response.businesses[i].alias}<br>
+        foodLocation.bindPopup(`
+          ${response.businesses[i].name}<br>
           ${response.businesses[i].display_phone}<br>
+          Rating:
           ${response.businesses[i].rating}<br>
-          ${response.businesses[i].transactions}<br>
-          ${response.businesses[i].categories[0].alias}<br>
-          ${response.businesses[i].is_closed}<br>
+          ${response.businesses[i].price === undefined ? '' :response.businesses[i].price}<br>
+          ${response.businesses[i].categories[0].title}<br>
+          ${response.businesses[i].is_closed ? "Closed" : "Open"}<br>`
         
-          `
-
-          // if (response.businesses[i].is_closed === true) {
-          //     `open`
-          // } else {
-          //     `closed`
-          // }
+        
 
         ).openPopup();
 
