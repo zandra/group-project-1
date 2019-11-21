@@ -6,23 +6,35 @@
   top: 0px;
 }
 
-.Searchbars {
-  display: inline-block;
-  width: 33%
-  padding: 60px;
-  text-align: center, top;
-  background: #1abc9c;
-  color: whitesmoke;
-  font-size: 30px;
-  height: 100px;
-}
-
 #mapid {
   height: 500px;
   position: absolute;
+  z-index: -1;
   bottom: 0;
   right: 0;
   left: 0;
+}
+
+/* .searchbars - .collapsible-body are needed for the filters and searchbars on the map module */
+.Searchbars {
+  display: inline-block;
+  width: 33%
+}
+
+ul > li {
+  display: inline-block;
+  zoom: 1;
+  z-index: 2;
+}
+
+.collapsible-header {
+  display: inline-block;
+}
+
+.collapsible-body {
+  background-color: white;
+  position: absolute;
+  display: none
 }
 
 body {
@@ -61,7 +73,7 @@ body {
 }
 
 .munchi-input {
-  margin: 18px 0 0 0;
+  margin: 50px 0 0 0;
 }
 
 img {
@@ -75,10 +87,6 @@ label {
   top: 20px;
 }
 
-.whereAboutsLabel {
-  padding-top: 20px;
-}
-
 input {
   background-color: white !important;
   border-radius: 20px !important;
@@ -88,10 +96,6 @@ input {
 }
 
 a {
-  font-size: 20px;
+  font-size: 25px;
   color: #18bc9d;
-}
-
-#orLabel {
-  margin: 5px 0;
 }
