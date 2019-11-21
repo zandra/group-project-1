@@ -48,8 +48,8 @@ var Results = (function () {
   // main init method
   function init() {
     cacheDom();
-    render();
-    mapME();
+    // render();
+    // mapME();
   }
   /* =============== export public methods =============== */
   return {

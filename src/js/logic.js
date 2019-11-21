@@ -70,8 +70,8 @@ var Logic = (function() {
     /* =================== public methods ================== */
     // main init method
     function init() {
-        mymap();
-        onMapClick();
+        // mymap();
+        // onMapClick();
     }
     /* =============== export public methods =============== */
     return {
