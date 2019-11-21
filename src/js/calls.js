@@ -7,37 +7,38 @@ var Calls = (function () {
 
     /* =================== private methods ================= */
 
-      const token = 'Bearer ERyByTkumJyy5HXbiMBTukTvSxjGzdWa6mo9HtSNsxWXK_bvwvbGeSMCfNWObo18bChYAF_p4-UpQvr1ye20KqWLiFdgRTVJ9bqWSlBOU6p8U4Yo-286thb_vGbQXXYx';
-      const cors_url = 'https://cors-anywhere.herokuapp.com';
+      var token = 'Bearer ERyByTkumJyy5HXbiMBTukTvSxjGzdWa6mo9HtSNsxWXK_bvwvbGeSMCfNWObo18bChYAF_p4-UpQvr1ye20KqWLiFdgRTVJ9bqWSlBOU6p8U4Yo-286thb_vGbQXXYx';
+      var cors_url = 'https://cors-anywhere.herokuapp.com';
 
-    
+
     // cache DOM elements
     function cacheDom() {
     }
 
-    function yelpBusinessSearch(searchTerm, searchLocation, latitude, longitude) {
-      const yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search';
-      const auth1 = token;
+    function yelpBusinessSearch() {
+      var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search?term=food&location=78726';
+      var auth1 = token;
       // let searchTerm = DOM.$searchLocation;
       // let searchLocation = '78722';
-      
-      
+
+
       $.ajax({
         url:  'https://cors-anywhere.herokuapp.com/' + yelp_business_search_url,
-        data: {
-          term: searchTerm,
-          location: searchLocation
-          // longitude: longitude,
-          // latitude: latitude
-        },
+        // data: {
+        //   term: searchTerm,
+        //   location: searchLocation,
+        //   longitude: longitude,
+        //   latitude: latitude
+        // },
         headers: {
-          'Authorization': auth1
+          'Authorization': auth1,
+          'Access-Control-Allow-Origin': '*'
         },
         method: 'GET'
       }).then(function (response){
         console.log(response);
       });
-          
+
     }
 
     function yelpBusinessMatch(id) {

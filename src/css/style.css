@@ -61,7 +61,7 @@ body {
 }
 
 .munchi-input {
-  margin: 50px 0 0 0;
+  margin: 18px 0 0 0;
 }
 
 img {
@@ -75,6 +75,10 @@ label {
   top: 20px;
 }
 
+.whereAboutsLabel {
+  padding-top: 20px;
+}
+
 input {
   background-color: white !important;
   border-radius: 20px !important;
@@ -84,6 +88,10 @@ input {
 }
 
 a {
-  font-size: 25px;
+  font-size: 20px;
   color: #18bc9d;
+}
+
+#orLabel {
+  margin: 5px 0;
 }

@@ -21,22 +21,24 @@ var Landing = (function() {
         $('#zipInput').on('keyup', function(event) {
           if (event.keyCode === 13) {
             event.preventDefault();
+            const searchTerms = DOM.$zip.val().trim();
+            console.log(searchTerms);
+            Calls.yelpBusinessSearch();
           }
         });
 
-        DOM.$zip.on('click', function(){
-          const searchTerms = DOM.$zip.val().trim();
-          console.log(searchTerms);
+        // DOM.$zip.on('click', function(){
 
-          // split the search terms 
+
+          // split the search terms
           // Calls.yelpBusinessSearch('coffee', '78746');
           // Calls.yelpBusinessMatch("WavvLdfdP6g8aZTtbBQHTw");
-        })
+        // });
 
       }
-        
-        function getLocation() { 
-          
+
+        function getLocation() {
+
           $('#currentLocation').on('click', function(){
 
             // from https://medium.com/better-programming/how-to-detect-the-location-of-your-websites-visitor-using-javascript-92f9e91c095f
@@ -45,7 +47,7 @@ var Landing = (function() {
               navigator.geolocation.getCurrentPosition(
                function success(position) {
                  // for when getting location is a success
-                 console.log('latitude', position.coords.latitude, 
+                 console.log('latitude', position.coords.latitude,
                              'longitude', position.coords.longitude);
                 // Calls.yelpBusinessSearch(searchTerms, latitude=position.coords.latitude, );
                 },
@@ -57,7 +59,7 @@ var Landing = (function() {
             } else {
               // geolocation is not supported
               // get your location some other way
-              console.log('geolocation is not enabled on this browser')
+              console.log('geolocation is not enabled on this browser');
             }
           });
         }
