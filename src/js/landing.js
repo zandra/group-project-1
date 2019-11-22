@@ -21,20 +21,16 @@ var Landing = (function() {
         $('#zipInput').on('keyup', function(event) {
           if (event.keyCode === 13) {
             event.preventDefault();
-            const searchTerms = DOM.$zip.val().trim();
-            console.log(searchTerms);
-            Calls.yelpBusinessSearch();
-          }
-        });
+            // const searchTerms = DOM.$zip.val().trim();
+            // console.log(searchTerms);
+            // Calls.yelpBusinessSearch();
+          };
+          
+          DOM.$zip.on('click', function(){
+            // Mapi.mapMe2(response.businesses);
+          });
 
-        // DOM.$zip.on('click', function(){
-
-
-          // split the search terms
-          // Calls.yelpBusinessSearch('coffee', '78746');
-          // Calls.yelpBusinessMatch("WavvLdfdP6g8aZTtbBQHTw");
-        // });
-
+        })
       }
 
         function getLocation() {
