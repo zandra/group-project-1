@@ -8,7 +8,6 @@ var Calls = (function () {
     /* =================== private methods ================= */
 
       var token = 'Bearer ERyByTkumJyy5HXbiMBTukTvSxjGzdWa6mo9HtSNsxWXK_bvwvbGeSMCfNWObo18bChYAF_p4-UpQvr1ye20KqWLiFdgRTVJ9bqWSlBOU6p8U4Yo-286thb_vGbQXXYx';
-      var cors_url = 'https://cors-anywhere.herokuapp.com';
 
 
     // cache DOM elements

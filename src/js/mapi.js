@@ -32,17 +32,33 @@ var Mapi = (function () {
       ${business.location.address2 ? business.location.address2 + '<br>' : ''}
       ${business.location.city}, ${business.location.state} ${business.location.zip_code}<br>
       ${business.is_closed  ? '<b>Closed</b>' : '<b>Open</b>'}
-      ${business.price ? 'Price: ' + '<b>'+business.price+'</b>'  : ''}
-      `;
+      ${business.price ? 'Price: ' + '<b>'+business.price+'</b><br>'  : ''}
+      <a id='view' href'#' onclick=''>Go to restaurant page</a>
+      `
     });
 
-    /* ${business.rating ? 'Rating: ' + business.rating : ''} */
     for (let i=0; i<arr.length; i++) {
       var marker = L.marker([markerCoords[i][0], markerCoords[i][1]]).addTo(mymap);
       marker.bindPopup(popupMarkup[i]).openPopup();
+      marker.on('click', function(e) {
+        var popup = e.target.getPopup();
+        console.log(popup);
+        var url="DYNAMIC_CONTENT_URL";
+        $.get(url).done(function(data) {
+            popup.setContent(data);
+            popup.update();
+        });
+      })
     }
+    // mymap.on('popupopen', function() {
+    //   $('a').on('click', function(event, ) {
+    //     console.log(this);
+    //     console.log(event);
+    //     // View.viewRestaurant(arr[0]);
+    //     return false;
+    //   })
+    // })
   }
-
   // main init method
   function init() {
     cacheDom();

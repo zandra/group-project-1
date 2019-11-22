@@ -7,10 +7,11 @@ var View = (function () {
   function cacheDom() {
   }
   /* =================== public methods ================== */
+  function viewRestaurant(restaurant) {
+    $('.view').append(`<h2>${restaurant.name}</h2>`);
+  }
 
   
-
-
     // main init method
     function init() {
       cacheDom();
@@ -18,7 +19,8 @@ var View = (function () {
     /* =============== export public methods =============== */
     return {
       init: init,
+      viewRestaurant: viewRestaurant
 
     };
-  
+
   }());
