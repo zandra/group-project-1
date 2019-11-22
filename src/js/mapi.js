@@ -21,7 +21,7 @@ var Mapi = (function () {
     const getLongRange = mock_response.businesses
       .map( business => business.coordinates.longitude )
       .reduce( (acc, total) => acc + total) / mock_response.businesses.length;
-    
+
     let latMap = getLatRange;
     let longMap = getLongRange;
     let zoom = 13;
@@ -48,9 +48,9 @@ var Mapi = (function () {
       ${business.location.city}, ${business.location.state} ${business.location.zip_code}<br>
       ${business.is_closed  ? '<b>Closed</b>' : '<b>Open</b>'}
       ${business.price ? 'Price: ' + '<b>'+business.price+'</b>'  : ''}
-      `
+      `;
     });
-    
+
     /* ${business.rating ? 'Rating: ' + business.rating : ''} */
     for (let i=0; i<arr.length; i++) {
       var marker = L.marker([markerCoords[i][0], markerCoords[i][1]]).addTo(mymap);
