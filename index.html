@@ -1,76 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- this is Leaflet's CSS file -->
-    <link rel='icon' href='src/images/favicon.ico' sizes="180x180" type='image/x-icon' />
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin="" />
-    <!-- Make sure this is ALWAYS AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-        crossorigin=""></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- this is Leaflet's CSS file -->
+  <link rel='icon' href='src/images/favicon.ico' sizes="180x180" type='image/x-icon' />
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+  <!-- Make sure this is ALWAYS AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 
-    <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="src/css/mapi.css">
-    <style>
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/mapi.css">
+  <style>
 
-    </style>
+  </style>
 </head>
 
 <body>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <div class='container testHide'>
-        <div class="bg-image"></div>
-        <div class="container login">
-          <h4 class="loginLink">LOGIN</h4>
-          <h4 class="signUpLink">SIGN UP</h4>
-        </div>
-        <div class="container munchi-intro">
-          <div class="row munchiRow">
-            <div class="col s5">
-              <img src="src/images/munchi-logo3.png" alt="munchi-logo">
-            </div>
-            <div class="col s7 munchi-input">
-              <label>What would you like to eat?</label>
-              <input placeholder="Food, Starbucks ,Mexican, etc..." id="termInput">
-              <div class="whereAboutsLabel">
-                <label>Whereabout?</label>
-              </div>
-              <div class="inputSearch">
-                <input placeholder="Address, Zip, or City" id="zipInput">
-                <button type="button" id="searchButton" name="button"><img src="src/images/magnify-search.png" alt="magnify-search" id="magnifySearch" class="img-rounded center-block"></button>
-              </div>
-              <h4 id="orLabel">or</h4>
-              <a href="#" id="currentLocation">Search where I am!</a>
-            </div>
-          </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <div class="bg-image"></div>
+  <div class='container testHide'>
 
-        </div>
+    <div class="container login">
+      <h4 class="loginLink">LOGIN</h4>
+      <h4 class="signUpLink">SIGN UP</h4>
     </div>
+    <div class="container munchi-intro">
+      <div class="row munchiRow">
+        <div class="col s5">
+          <img src="src/images/munchi-logo3.png" alt="munchi-logo">
+        </div>
+        <div class="col s7 munchi-input">
+          <label>What would you like to eat?</label>
+          <input placeholder="Food, Starbucks ,Mexican, etc..." id="termInput">
+          <div class="whereAboutsLabel">
+            <label>Whereabout?</label>
+          </div>
+          <div class="inputSearch">
+            <input placeholder="Address, Zip, or City" id="zipInput">
+            <button type="button" id="searchButton" name="button"><img src="src/images/magnify-search.png"
+                alt="magnify-search" id="magnifySearch" class="img-rounded center-block"></button>
+          </div>
+          <h4 id="orLabel">or</h4>
+          <a href="#" id="currentLocation">Search where I am!</a>
+        </div>
+      </div>
 
-        <!-- MAP ID  -->
-        <div class='container'>
-            <div id='mapid'></div>
-        <div>
+    </div>
+  </div>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type='text/javascript' src='src/js/response.js'></script>
-    <script type='text/javascript' src='src/js/landing.js'></script>
-    <script type='text/javascript' src='src/js/calls.js'></script>
-    <script type='text/javascript' src='src/js/results.js'></script>
-    <script type='text/javascript' src="src/js/mapi.js"></script>
-    <script type='text/javascript' src='src/js/app.js'></script>
+  <!-- MAP ID  -->
+  <div class='container'>
+    <div id='mapid'></div>
+    <div>
 
-    <!-- <script type='module' src='src/js/landing.js'></script>
+      <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script type='text/javascript' src='src/js/response.js'></script>
+      <script type='text/javascript' src='src/js/landing.js'></script>
+      <script type='text/javascript' src='src/js/calls.js'></script>
+      <script type='text/javascript' src='src/js/results.js'></script>
+      <script type='text/javascript' src="src/js/mapi.js"></script>
+      <script type='text/javascript' src='src/js/app.js'></script>
+
+      <!-- <script type='module' src='src/js/landing.js'></script>
     <script type='module' src='src/js/calls.js'></script>
     <script type='module' src='src/js/results.js'></script>
     <script type='module' src="src/js/mapi.js"></script>
