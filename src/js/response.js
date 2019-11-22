@@ -1,4 +1,4 @@
-const response = {
+const mock_response = {
   "businesses": [
       {
           "id": "AcFt364BrHyMu3VrSCKMOw",

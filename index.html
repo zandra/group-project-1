@@ -19,10 +19,16 @@
 
 
     <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/mapi.css">
+    <style>
+     
+    </style>
 </head>
 
 <body>
-        <div class="bg-image"></div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <div class='container'>
+        <div class="bg-image"></div> 
         <div class="container login">
           <h4 class="loginLink">LOGIN</h4>
           <h4 class="signUpLink">SIGN UP</h4>
@@ -42,106 +48,34 @@
                 <input placeholder="Dallas, 78746, 313 E 6th St. Austin TX, etc..." id="zipInput">
                 <button type="button" id="searchButton" name="button"><img src="src/images/magnify-search.png" alt="magnify-search" id="magnifySearch" class="img-rounded center-block"></button>
               </div>
-
+              <input placeholder="78722, Dallas, " id="zipInput">
               <h4 id="orLabel">or</h4>
               <a href="#" id="currentLocation">Search where I am!</a>
             </div>
           </div>
 
-        </div>
-
-    <!-- below code is what needs to be dynamically added so that the map module can have search bars, headers, and filters.
-        Put here so that it is somewhere accessible
-
-    <div class="header teal accent-3 col s12">
-        <h1 class="white-text center-align">munchi</h1>
+        </div> 
     </div>
 
-    <div class="row">
-        <div class="SearchCriteria">
-            <form>
-                <div id="StarterSearch">
-                    <div class="input-field Searchbars">
-                        <label for="Food_Search">What do you feel like eating?</label>
-                        <input type="text" id="FoodSearch">
-                    </div>
-                    <div class="input-field Searchbars">
-                        <label for="Location">Whereabouts do you want to eat?</label>
-                        <input type="text" id="Location">
-                    </div>
-                    <input type="submit" id="SearchBtn">
-                <hr>
+        <!-- MAP ID  -->
+        <div class='container'>
+            <div id='mapid'></div>
+        <div>
 
-                <ul id="Search Filters" class="collapsible">
-                    <li>
-                        <div class="collapsible-header">Price</div>
-                        <div class="collapsible-body">
-                            <span>
-                                How much are you willing to spend?
-                                <br>
-                                <a class="waves-effect waves-light btn">$</a>
-                                <a class="waves-effect waves-light btn">$$</a>
-                                <a class="waves-effect waves-light btn">$$$</a>
-                                <a class="waves-effect waves-light btn">$$$$</a>
-                            </span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">Availability</div>
-                        <div class="collapsible-body">
-                            <span>
-                                <div id="Filter2Addon">
-                                    When are you going?
-                                    <br>
-                                    <button id="EatNowBtn">Now</button>
-                                    <br>
-                                    Later:   <input type="text" class="timepicker">
-                                    <br>
-                                    <button id="All-dayEats">24 Hour Eats</button>
-                                </div>
-                            </span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">Other</div>
-                        <div class="collapsible-body">
-                            <span>
-                                <div id="Filter3Addon">
-                                    3rd filter option goes here
-                                    fill out when we get a clearer image of filter options
-                                </div>
-                            </span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">The rest of the filters</div>
-                        <div class="collapsible-body">
-                            <span>
-                                <div id="AllFilterOptions">
-                                    Put the rest of the filters
-                                </div>
-                            </span>
-                        </div>
-                    </li>
-                </ul>
-            </form>
-        </div>
-        <div class="map-section">
-            <div id="mapid">
-            </div>
-        </div>
-    </div>
-    -->
- <!-- end of search-container -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src='src/js/response.js'></script>
-    <script type='text/javascript' src='src/js/landing.js'></script>
+    <script type='text/javascript' src='src/js/response.js'></script>
+    <script type='text/javascript'src='src/js/landing.js'></script>
     <script type='text/javascript' src='src/js/calls.js'></script>
-    <script type="text/javascript" src='src/js/results.js'></script>
-    <!-- <script type="text/javascript" src="src/js/logic.js"></script> -->
+    <script type='text/javascript' src='src/js/results.js'></script>
+    <script type='text/javascript' src="src/js/mapi.js"></script>
     <script type='text/javascript' src='src/js/app.js'></script>
+
+    <!-- <script type='module' src='src/js/landing.js'></script>
+    <script type='module' src='src/js/calls.js'></script>
+    <script type='module' src='src/js/results.js'></script>
+    <script type='module' src="src/js/mapi.js"></script>
+    <script type='module' src='src/js/app.js'></script> -->
 </body>
 
 </html>

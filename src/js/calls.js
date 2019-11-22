@@ -16,58 +16,53 @@ var Calls = (function () {
     }
 
     function yelpBusinessSearch() {
-      var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search?term=food&location=East 23rd Street Austin, TX';
+      var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search';
       var auth1 = token;
-      // let searchTerm = DOM.$searchLocation;
-      // let searchLocation = '78722';
+      let searchTerm = 'coffee'
+      let searchLocation = '11205';
 
 
       $.ajax({
         url:  'https://cors-anywhere.herokuapp.com/' + yelp_business_search_url,
-        // data: {
-        //   term: searchTerm,
-        //   location: searchLocation,
-        //   longitude: longitude,
-        //   latitude: latitude
-        // },
+        data: {
+          term: searchTerm,
+          location: searchLocation
+          // longitude: longitude,
+          // latitude: latitude
+        },
         headers: {
           'Authorization': auth1,
           'Access-Control-Allow-Origin': '*'
         },
         method: 'GET'
-      }).then(function (response){
-        console.log(response);
+      }).then(function(response){
+        Mapi.mapMe2(response.businesses);
+        $('#mapid').css({ opacity: 1 });
       });
-
     }
 
     function yelpBusinessMatch(id) {
-      const yelp_business_match_url = `https://api.yelp.com/v3/businesses/${id}`;
-      const auth2 = token;
+    //     const yelp_business_match_url = `https://api.yelp.com/v3/businesses/${id}`;
+    //     const auth2 = token;
 
-      $.ajax({
-        url: 'https://cors-anywhere.herokuapp.com/' + yelp_business_match_url,
-        headers: {'Authorization': auth2},
-        method: 'GET'
-      }).then(function (response){
-        console.log(response);
-      });
+    //     $.ajax({
+    //       url: 'https://cors-anywhere.herokuapp.com/' + yelp_business_match_url,
+    //       headers: {'Authorization': auth2},
+    //       method: 'GET'
+    //     }).then(function (){
+    //     });
     }
 
-      // yelpBusinessSearch('coffee', '78746');
-      // yelpBusinessMatch("WavvLdfdP6g8aZTtbBQHTw");
       /* =================== public methods ================== */
       // main init method
       function init() {
         cacheDom();
         yelpBusinessSearch();
-        yelpBusinessMatch();
       }
       /* =============== export public methods =============== */
       return {
         init: init,
-        yelpBusinessSearch: yelpBusinessSearch,
-        yelpBusinessMatch: yelpBusinessMatch
+        yelpBusinessSearch: yelpBusinessSearch
       };
 
   }());

@@ -1,0 +1,13 @@
+#mapid {
+  opacity: 0;
+}
+
+.leaflet-container {
+  height: 400px;
+  width: 600px;
+}
+
+.leaflet-control-attribution {
+  font-size: x-small;
+}
+
