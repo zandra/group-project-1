@@ -18,16 +18,25 @@ var Landing = (function() {
         DOM.$intro.fadeIn();
         DOM.$zip.focus();
 
-        $('#zipInput').on('keyup', function(event) {
-          if (event.keyCode === 13) {
-            event.preventDefault();
-            const searchTerms = DOM.$zip.val().trim();
-            console.log(searchTerms);
-            Calls.yelpBusinessSearch();
-          }
-        });
+        // $('#zipInput').on('keyup', function(event) {
+        //   if (event.keyCode === 13) {
+        //     event.preventDefault();
+        //     const searchTerms = DOM.$zip.val().trim();
+        //     console.log(searchTerms);
+        //     Calls.yelpBusinessSearch();
+        //   }
+        // });
 
-        })
+        $('#searchButton').on('click', function(event) {
+          
+            event.preventDefault();
+            // const searchTerms = DOM.$zip.val().trim();
+            // console.log(searchTerms);
+            Calls.yelpBusinessSearch();
+            // 'hide' here is a materialize class that is added with jQuery
+            $('.testHide').addClass('hide');
+          
+        });
       }
 
         function getLocation() {

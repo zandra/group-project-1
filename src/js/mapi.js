@@ -26,7 +26,9 @@ var Mapi = (function () {
     let longMap = getLongRange;
     let zoom = 13;
 
-    var mymap = L.map('mapid').setView([latMap, longMap], zoom);
+    var mymap = L.map('mapid',{ zoomControl: false }).setView([latMap, longMap], zoom);
+
+    new L.Control.Zoom({ position: 'bottomright'}).addTo(mymap);
 
     L.tileLayer(`https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=${accessToken}`, {
       // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -37,7 +39,7 @@ var Mapi = (function () {
 
     function mapMe2(arr) {
 
-     $('#mapid').css({ opacity: 0.6 });
+    //  $('#mapid').css({ opacity: 0.6 });
 
     const markerCoords = arr.map( business => ([business.coordinates.latitude, business.coordinates.longitude]) );
     const popupMarkup = arr.map( business => {
