@@ -18,8 +18,8 @@ var Calls = (function () {
     function yelpBusinessSearch() {
       var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search';
       var auth1 = token;
-      let searchTerm = 'coffee'
-      let searchLocation = '11205';
+      let searchTerm = $('#termInput').val().trim();
+      let searchLocation = $('#zipInput').val().trim();
 
 
       $.ajax({
@@ -63,6 +63,7 @@ var Calls = (function () {
       return {
         init: init,
         yelpBusinessSearch: yelpBusinessSearch
+        
       };
 
   }());
