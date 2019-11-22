@@ -25,8 +25,9 @@
     </style>
 </head>
 
-<body background="">
-    <!-- <div class='container'>
+<body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <div class='container'>
         <div class="bg-image"></div> 
         <div class="container login">
           <h4 class="loginLink">LOGIN</h4>
@@ -43,26 +44,34 @@
               <div class="whereAboutsLabel">
                 <label>Whereabout?</label>
               </div>
-              <input placeholder="Dallas, 78746, 313 E 6th St. Austin TX, etc..." id="zipInput">
+              <input placeholder="78722, Dallas, " id="zipInput">
               <h4 id="orLabel">or</h4>
               <a href="#" id="currentLocation">Search where I am!</a>
             </div>
           </div>
 
-        </div> -->
-
-        <!-- MAP ID  -->
-        <div id='mapid'></div>
+        </div> 
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- MAP ID  -->
+        <div class='container'>
+            <div id='mapid'></div>
+        <div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src='src/js/response.js'></script>
-    <script type='text/javascript' src='src/js/landing.js'></script>
+    <script type='text/javascript' src='src/js/response.js'></script>
+    <script type='text/javascript'src='src/js/landing.js'></script>
     <script type='text/javascript' src='src/js/calls.js'></script>
-    <script type="text/javascript" src='src/js/results.js'></script>
-    <script type="text/javascript" src="src/js/mapi.js"></script>
+    <script type='text/javascript' src='src/js/results.js'></script>
+    <script type='text/javascript' src="src/js/mapi.js"></script>
     <script type='text/javascript' src='src/js/app.js'></script>
+
+    <!-- <script type='module' src='src/js/landing.js'></script>
+    <script type='module' src='src/js/calls.js'></script>
+    <script type='module' src='src/js/results.js'></script>
+    <script type='module' src="src/js/mapi.js"></script>
+    <script type='module' src='src/js/app.js'></script> -->
 </body>
 
 </html>

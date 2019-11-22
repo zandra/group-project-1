@@ -7,20 +7,20 @@ var Mapi = (function () {
   function cacheDom() {
   }
   /* =================== public methods ================== */
-  function mapMe2(arr){
+
     // leaflet access token
     const accessToken = 'pk.eyJ1IjoianlvbmdlIiwiYSI6ImNrMzFzOTJhOTAzczUzbG9iNzJkbThqNGgifQ.P8qxxnXrweFPSDAk0myObw';
     // mock response
 
     // get average of response businesses latitudes
-    const getLatRange = response.businesses
+    const getLatRange = mock_response.businesses
       .map( business => business.coordinates.latitude )
-      .reduce( (acc, total) => acc + total) / response.businesses.length;
+      .reduce( (acc, total) => acc + total) / mock_response.businesses.length;
 
     // get average of response businesses longitude
-    const getLongRange = response.businesses
+    const getLongRange = mock_response.businesses
       .map( business => business.coordinates.longitude )
-      .reduce( (acc, total) => acc + total) / response.businesses.length;
+      .reduce( (acc, total) => acc + total) / mock_response.businesses.length;
     
     let latMap = getLatRange;
     let longMap = getLongRange;
@@ -35,8 +35,9 @@ var Mapi = (function () {
       accessToken: accessToken
     }).addTo(mymap);
 
-    console.log(response)
+    function mapMe2(arr) {
 
+     $('#mapid').css({ opacity: 0.6 });
 
     const markerCoords = arr.map( business => ([business.coordinates.latitude, business.coordinates.longitude]) );
     const popupMarkup = arr.map( business => {
@@ -57,18 +58,17 @@ var Mapi = (function () {
     }
   }
 
-  mapMe2(response.businesses);
+  // mapMe2(mock_response.businesses);
+
 
   // main init method
   function init() {
     cacheDom();
-    // mapMe2();
-    // mymap();
-    // onMapClick();
   }
   /* =============== export public methods =============== */
   return {
     init: init,
+    mymap, mymap,
     mapMe2: mapMe2
   };
 
