@@ -44,6 +44,7 @@ var Landing = (function () {
         Calls.yelpBusinessSearch();
         // 'hide' here is a materialize class that is added with jQuery
       $('.landingHTML').addClass('hide');
+      $('.bg-image').addClass('hide');
       }
     });
 
@@ -54,7 +55,7 @@ var Landing = (function () {
       Calls.yelpBusinessSearch();
       // 'hide' here is a materialize class that is added with jQuery
       $('.landingHTML').addClass('hide');
-
+      $('.bg-image').addClass('hide');
     });
   }
 
