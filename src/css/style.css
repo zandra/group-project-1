@@ -37,9 +37,15 @@ ul > li {
   display: none
 }
 
-body {
+.bg-image {
+  position: fixed;
   background-image: url(../images/AustinSkyline.jpg);
-  background-size: cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  height:100vh;
+  width:100vw;
+  z-index: -1;
 }
 
 .login {
