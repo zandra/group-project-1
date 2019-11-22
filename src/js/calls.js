@@ -15,11 +15,11 @@ var Calls = (function () {
     function cacheDom() {
     }
 
-    function yelpBusinessSearch() {
+    function yelpBusinessSearch(searchTerm, searchLocation) {
       var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search';
       var auth1 = token;
-      let searchTerm = $('#termInput').val().trim();
-      let searchLocation = $('#zipInput').val().trim();
+      // let searchTerm = 'coffee'
+      // let searchLocation = '11205';
 
 
       $.ajax({
@@ -57,13 +57,12 @@ var Calls = (function () {
       // main init method
       function init() {
         cacheDom();
-        yelpBusinessSearch();
       }
       /* =============== export public methods =============== */
       return {
         init: init,
         yelpBusinessSearch: yelpBusinessSearch
-        
+
       };
 
   }());

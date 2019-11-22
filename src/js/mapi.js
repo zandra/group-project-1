@@ -10,25 +10,8 @@ var Mapi = (function () {
 
     // leaflet access token
     const accessToken = 'pk.eyJ1IjoianlvbmdlIiwiYSI6ImNrMzFzOTJhOTAzczUzbG9iNzJkbThqNGgifQ.P8qxxnXrweFPSDAk0myObw';
-    // mock response
 
-    // get average of response businesses latitudes
-    const getLatRange = mock_response.businesses
-      .map( business => business.coordinates.latitude )
-      .reduce( (acc, total) => acc + total) / mock_response.businesses.length;
-
-    // get average of response businesses longitude
-    const getLongRange = mock_response.businesses
-      .map( business => business.coordinates.longitude )
-      .reduce( (acc, total) => acc + total) / mock_response.businesses.length;
-
-    let latMap = getLatRange;
-    let longMap = getLongRange;
-    let zoom = 13;
-
-    var mymap = L.map('mapid',{ zoomControl: false }).setView([latMap, longMap], zoom);
-
-    new L.Control.Zoom({ position: 'bottomright'}).addTo(mymap);
+    var mymap = L.map('mapid').setView([30.2672, -97.7431], 13);
 
     L.tileLayer(`https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=${accessToken}`, {
       // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -59,9 +42,6 @@ var Mapi = (function () {
       marker.bindPopup(popupMarkup[i]).openPopup();
     }
   }
-
-  // mapMe2(mock_response.businesses);
-
 
   // main init method
   function init() {
