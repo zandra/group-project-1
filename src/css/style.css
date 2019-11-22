@@ -59,7 +59,8 @@ body {
 }
 
 .munchi-intro {
-  background-image: linear-gradient(#71db77,#71db77,white);
+  /* background-image: linear-gradient(#71db77,#71db77,white); */
+  background-color: #71db77;
   color: white;
   font-weight: bold;
   width: 50%;
@@ -104,6 +105,39 @@ a {
   margin-top: 20px;
 }
 
+#searchButton {
+  /* position: relative;
+  bottom: 46px;
+  left: 316px; */
+  margin-top: 15px;
+  height: 46px;
+  width: 55px;
+  border-radius: 0 20px 20px 0;
+  background-color: #18bc9d;
+  cursor: pointer;
+  border: 0;
+  /* padding: 0; */
+}
+
+#magnifySearch {
+  width: 30px;
+  cursor: pointer;
+}
+
+#zipInput {
+  width: 375px;
+  border-radius: 20px 0 0 20px !important;
+  margin: 0;
+}
+
+/* .inputSearch {
+  vertical-align: middle;
+} */
+#zipInput,#searchButton {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 #orLabel {
   margin: 5px 0;
   padding-right: 20px;
@@ -115,8 +149,5 @@ a {
 
 #orLabel,#currentLocation {
   display: inline-block;
-}
-
-#zipInput,#landingSubmit {
-  display: inline-block;
+  padding-top: 20px;
 }

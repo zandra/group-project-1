@@ -27,6 +27,11 @@ var Landing = (function() {
           }
         });
 
+        $('#searchButton').on('click',function(){
+          $('.munchi-intro').css('opacity',0);
+          $('.login').css('opacity',0);
+        });
+
         // DOM.$zip.on('click', function(){
 
 
