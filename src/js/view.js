@@ -9,9 +9,24 @@ var View = (function () {
   /* =================== public methods ================== */
   function viewRestaurant(restaurant) {
     $('.results').addClass('hide');
-    $('.view').append(`<h2>${restaurant.name}</h2>`);
-  }
 
+    // console.log(restaurant);
+      function prettyNumber(phonenumber){
+          var newNumber = phonenumber.slice(2,5) +'-' + phonenumber.slice(5,8)+ '-' + phonenumber.slice(8)
+          return newNumber
+        }
+      $('.view').append(`<img src=${restaurant.image_url}>`);
+      $('.view').append(`<h1 class=‘name’>${restaurant.name}</h1>`);
+      $('.view').append(`<h2><span class=‘address’>Address: ${restaurant.address1}</span>${restaurant.address2}, ${restaurant.city}, ${restaurant.state}  ${restaurant.zip_code}</h2> `);
+      $('.view').append(`<p><span class=‘phone’>Phone: ` + prettyNumber(`${restaurant.phone}`) + `</p>`);
+      $('.view').append(`<p><span class=‘rating’>Rating: ${restaurant.rating}</p>`);
+      $('.view').append(`<a href=“${restaurant.url}“> Visit Our Page!</a>`);
+      $('#select-restaurant').on('click', function (event) {
+          event.preventDefault();
+          var inputRestaurant = $('#restaurant-input').val().trim();
+          searchGoodInTown(inputRestaurant);
+      });
+  }
   
     // main init method
     function init() {
