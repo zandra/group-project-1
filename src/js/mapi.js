@@ -10,9 +10,12 @@ var Mapi = (function () {
 
     // leaflet access token
     const accessToken = 'pk.eyJ1IjoianlvbmdlIiwiYSI6ImNrMzFzOTJhOTAzczUzbG9iNzJkbThqNGgifQ.P8qxxnXrweFPSDAk0myObw';
+    // mock response
 
-   
-    var mymap = L.map('mapid',{ zoomControl: false }).setView([latMap, longMap], zoom);
+    
+    let zoom = 13;
+
+    var mymap = L.map('mapid',{ zoomControl: false }).setView([30.26986, -97.743212], zoom);
 
     new L.Control.Zoom({ position: 'bottomright'}).addTo(mymap);
 
@@ -24,6 +27,8 @@ var Mapi = (function () {
     }).addTo(mymap);
 
     function mapMe2(arr) {
+
+
     //  $('#mapid').css({ opacity: 0.6 });
 
     const businesses = arr.map( business => {
@@ -45,14 +50,22 @@ var Mapi = (function () {
     });
     console.log(businesses);
 
+
     const markerCoords = arr.map( business => ([business.coordinates.latitude, business.coordinates.longitude]) );
     const popupMarkup = arr.map( business => {
       return `
-      <span class='name'><b>${business.name}</b></span><br>
+      <b>${business.name}</b><br>
       ${business.location.address1}<br>
       ${business.location.address2 ? business.location.address2 + '<br>' : ''}
       ${business.location.city}, ${business.location.state} ${business.location.zip_code}<br>
       ${business.is_closed  ? '<b>Closed</b>' : '<b>Open</b>'}
+
+      ${business.price ? 'Price: ' + '<b>'+business.price+'</b>'  : ''}
+      `
+    });
+    
+    /* ${business.rating ? 'Rating: ' + business.rating : ''} */
+
       ${business.price ? 'Price: ' + '<b>'+business.price+'</b><br>'  : ''}
       <a id='view' href'#'>Go to restaurant page</a>
       `
@@ -63,10 +76,12 @@ var Mapi = (function () {
     //   marker.bindPopup(popupMarkup[i]).openPopup();
     // }
 
+
     for (let i=0; i<arr.length; i++) {
       var marker = L.marker([businesses[i].latitude, businesses[i].longitude]).addTo(mymap);
       marker.bindPopup(popupMarkup[i]).openPopup();
     }
+
 
     mymap.on('popupopen', function() {
       $('a').on('click', function(event) {
@@ -78,7 +93,11 @@ var Mapi = (function () {
         return false;
       })
     })
+
   }
+
+  // mapMe2(mock_response.businesses);
+
 
   // main init method
   function init() {
