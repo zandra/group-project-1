@@ -28,7 +28,28 @@ var Mapi = (function () {
 
     function mapMe2(arr) {
 
+
     //  $('#mapid').css({ opacity: 0.6 });
+
+    const businesses = arr.map( business => {
+      return {
+        name: business.name,
+        image_url: business.image_url,
+        phone: business.phone,
+        rating: business.rating,
+        latitude: business.coordinates.latitude,
+        longitude: business.coordinates.longitude,
+        address1: business.location.address1,
+        address2: business.location.address2 || '',
+        city: business.location.city,
+        state: business.location.state,
+        zip_code: business.location.zip_code,
+        is_closed: business.is_closed,
+        price: business.price
+      }
+    });
+    console.log(businesses);
+
 
     const markerCoords = arr.map( business => ([business.coordinates.latitude, business.coordinates.longitude]) );
     const popupMarkup = arr.map( business => {
@@ -38,15 +59,41 @@ var Mapi = (function () {
       ${business.location.address2 ? business.location.address2 + '<br>' : ''}
       ${business.location.city}, ${business.location.state} ${business.location.zip_code}<br>
       ${business.is_closed  ? '<b>Closed</b>' : '<b>Open</b>'}
+
       ${business.price ? 'Price: ' + '<b>'+business.price+'</b>'  : ''}
       `
     });
     
     /* ${business.rating ? 'Rating: ' + business.rating : ''} */
+
+      ${business.price ? 'Price: ' + '<b>'+business.price+'</b><br>'  : ''}
+      <a id='view' href'#'>Go to restaurant page</a>
+      `
+    });
+
+    // for (let i=0; i<arr.length; i++) {
+    //   var marker = L.marker([markerCoords[i][0], markerCoords[i][1]]).addTo(mymap);
+    //   marker.bindPopup(popupMarkup[i]).openPopup();
+    // }
+
+
     for (let i=0; i<arr.length; i++) {
-      var marker = L.marker([markerCoords[i][0], markerCoords[i][1]]).addTo(mymap);
+      var marker = L.marker([businesses[i].latitude, businesses[i].longitude]).addTo(mymap);
       marker.bindPopup(popupMarkup[i]).openPopup();
     }
+
+
+    mymap.on('popupopen', function() {
+      $('a').on('click', function(event) {
+        let selected = event.target.parentElement.firstElementChild.innerText;
+        console.log(selected);
+        let myRestaurant = businesses.find(business => business.name === selected);
+        console.log(myRestaurant);
+        View.viewRestaurant(myRestaurant);
+        return false;
+      })
+    })
+
   }
 
   // mapMe2(mock_response.businesses);
