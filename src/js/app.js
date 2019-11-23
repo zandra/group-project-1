@@ -1,6 +1,7 @@
 $(document).ready(function () {
-  Mapi.init();
   Landing.init();
-  Calls.init(Mapi);
+  Calls.init();
+  View.init(); 
+  Mapi.init();
   Results.init();
 });

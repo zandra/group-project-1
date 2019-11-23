@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="src/css/style.css">
   <link rel="stylesheet" href="src/css/mapi.css">
+  <link rel="stylesheet" href="src/css/filters.css">
   <style>
 
   </style>
@@ -30,20 +31,28 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
   <div class="bg-image"></div>
+  <div class="header teal accent-3 col s12">
+      <h1 class="white-text center-align">munchi</h1>
+    </div>
   <div class='container landingHTML'></div>
 
-  <!-- MAP ID  -->
-  <div class='container'>
+  <div class='container results'>
+      <!-- Filters Div -->
+    <div id='filters'></div>
+    <!-- MAP ID  -->
     <div id='mapid'></div>
-    <div>
+  </div>
+
+  <div class='container view'></div>
 
       <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script type='text/javascript' src='src/js/response.js'></script>
       <script type='text/javascript' src='src/js/landing.js'></script>
       <script type='text/javascript' src='src/js/calls.js'></script>
-      <script type='text/javascript' src='src/js/results.js'></script>
       <script type='text/javascript' src="src/js/mapi.js"></script>
+      <script type='text/javascript' src='src/js/results.js'></script>
+      <script type='text/javascript' src='src/js/view.js'></script>
       <script type='text/javascript' src='src/js/app.js'></script>
 
       <!-- <script type='module' src='src/js/landing.js'></script>

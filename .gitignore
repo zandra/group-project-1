@@ -1,2 +1,4 @@
 .DS_Store
 .jshintrc
+src/js/alex.js
+src/js/legacy.html

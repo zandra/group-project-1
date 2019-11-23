@@ -8,25 +8,25 @@ var Calls = (function () {
     /* =================== private methods ================= */
 
       var token = 'Bearer ERyByTkumJyy5HXbiMBTukTvSxjGzdWa6mo9HtSNsxWXK_bvwvbGeSMCfNWObo18bChYAF_p4-UpQvr1ye20KqWLiFdgRTVJ9bqWSlBOU6p8U4Yo-286thb_vGbQXXYx';
-      var cors_url = 'https://cors-anywhere.herokuapp.com';
 
 
     // cache DOM elements
     function cacheDom() {
     }
 
-    function yelpBusinessSearch() {
+    function yelpBusinessSearch(searchTerm, searchLocation, options = { }) {
       var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search';
       var auth1 = token;
-      let searchTerm = $('#termInput').val().trim();
-      let searchLocation = $('#zipInput').val().trim();
+      // let searchTerm = 'coffee'
+      // let searchLocation = '11205';
 
 
       $.ajax({
         url:  'https://cors-anywhere.herokuapp.com/' + yelp_business_search_url,
         data: {
           term: searchTerm,
-          location: searchLocation
+          location: searchLocation,
+          options: options
           // longitude: longitude,
           // latitude: latitude
         },
@@ -37,6 +37,8 @@ var Calls = (function () {
         method: 'GET'
       }).then(function(response){
         Mapi.mapMe2(response.businesses);
+        Results.render();
+        Results.filters(response.businesses)
         $('#mapid').css({ opacity: 1 });
       });
     }
@@ -57,13 +59,12 @@ var Calls = (function () {
       // main init method
       function init() {
         cacheDom();
-        yelpBusinessSearch();
       }
       /* =============== export public methods =============== */
       return {
         init: init,
         yelpBusinessSearch: yelpBusinessSearch
-        
+
       };
 
   }());
