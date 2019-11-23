@@ -4,32 +4,34 @@ var Mapi = (function () {
   var DOM = {};
   /* =================== private methods ================= */
   // cache DOM elements
-  function cacheDom() {
-  }
+  function cacheDom() {}
   /* =================== public methods ================== */
 
-    // leaflet access token
-    const accessToken = 'pk.eyJ1IjoianlvbmdlIiwiYSI6ImNrMzFzOTJhOTAzczUzbG9iNzJkbThqNGgifQ.P8qxxnXrweFPSDAk0myObw';
-    // mock response
+  // leaflet access token
+  const accessToken = 'pk.eyJ1IjoianlvbmdlIiwiYSI6ImNrMzFzOTJhOTAzczUzbG9iNzJkbThqNGgifQ.P8qxxnXrweFPSDAk0myObw';
+  // mock response
 
-    
-    let zoom = 13;
+  let zoom = 13;
 
-    var mymap = L.map('mapid',{ zoomControl: false }).setView([30.26986, -97.743212], zoom);
+  var mymap = L.map('mapid', {
+    zoomControl: false
+  }).setView([30.26986, -97.743212], zoom);
 
-    new L.Control.Zoom({ position: 'bottomright'}).addTo(mymap);
+  new L.Control.Zoom({
+    position: 'bottomright'
+  }).addTo(mymap);
 
 
-    L.tileLayer(`https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=${accessToken}`, {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      id: 'mapbox.streets',
-      accessToken: accessToken
-    }).addTo(mymap);
+  L.tileLayer(`https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=${accessToken}`, {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: accessToken
+  }).addTo(mymap);
 
-    function mapMe2(arr) {
+  function mapMe2(arr) {
 
-    const businesses = arr.map( business => {
+    const businesses = arr.map(business => {
       return {
         name: business.name,
         image_url: business.image_url,
@@ -47,7 +49,7 @@ var Mapi = (function () {
       }
     });
 
-    const popupMarkup = arr.map( business => {
+    const popupMarkup = arr.map(business => {
       return `
       <b>${business.name}</b><br>
       ${business.location.address1}<br>
@@ -56,24 +58,18 @@ var Mapi = (function () {
       ${business.is_closed  ? '<b>Closed</b>' : '<b>Open</b>'}
 
       ${business.price ? 'Price: ' + '<b>'+business.price+'</b>'  : ''}
-      `
-    });
-    
-    /* ${business.rating ? 'Rating: ' + business.rating : ''} */
-
-      ${business.price ? 'Price: ' + '<b>'+business.price+'</b><br>'  : ''}
-      <a id='view' href'#'>Go to restaurant page</a>
+      <br><a id='view' href'#'>Go to restaurant page</a>
       `
     });
 
-    for (let i=0; i<arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       var marker = L.marker([businesses[i].latitude, businesses[i].longitude]).addTo(mymap);
       marker.bindPopup(popupMarkup[i]).openPopup();
     }
 
 
-    mymap.on('popupopen', function() {
-      $('a').on('click', function(event) {
+    mymap.on('popupopen', function () {
+      $('a').on('click', function (event) {
         let selected = event.target.parentElement.firstElementChild.innerText;
         let myRestaurant = businesses.find(business => business.name === selected);
         View.viewRestaurant(myRestaurant);
@@ -82,9 +78,6 @@ var Mapi = (function () {
     })
 
   }
-
-  // mapMe2(mock_response.businesses);
-
 
   // main init method
   function init() {

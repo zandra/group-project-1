@@ -96,9 +96,8 @@ var Results = (function () {
     $('.btn').on("click", function(event){
       var priceFilter = results.filter(result => result.price === this.target.text);
       // trying to redraw the map here
-      });
+    });
   }
-  
 
    /* =================== public methods ================== */
   // main init method
