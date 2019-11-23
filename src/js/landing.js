@@ -4,6 +4,8 @@ var Landing = (function () {
   'use strict';
   // placeholder for cached DOM elements
   var DOM = {};
+  var searchTerm;
+  var searchLoc;
   /* =================== private methods ================= */
   // cache DOM elements
   function cacheDom() {
@@ -38,23 +40,19 @@ var Landing = (function () {
     DOM.$term.focus();
 
     // event when user presses the 'enter' key
-    $('#zipInput').on('keyup', function(event) {
+    $('#zipInput').on('keydown', function(event) {
       if (event.keyCode === 13) {
         event.preventDefault();
-        Calls.yelpBusinessSearch();
-        // 'hide' here is a materialize class that is added with jQuery
-      $('.landingHTML').addClass('hide');
+        return false;
       }
     });
-
+    
     // event when user presses the 'search button'
     $('#searchButton').on('click', function (event) {
       event.preventDefault();
-      // var searchTerm = DOM.$term.val().trim();
-      // var searchLoc = DOM.$current.val().trim();
-      // console.log(searchTerm);
-      // console.log(searchLoc);
-      Calls.yelpBusinessSearch("coffee", "90210");
+      searchTerm =$('#termInput').val().trim();
+      searchLoc = $('#zipInput').val().trim();
+      Calls.yelpBusinessSearch(searchTerm, searchLoc);
       // 'hide' here is a materialize class that is added with jQuery
       $('.landingHTML').addClass('hide');
 
@@ -108,14 +106,18 @@ var Landing = (function () {
   /* =================== public methods ================== */
   // main init method
   function init() {
-    landingHTMLRender();
     cacheDom();
+    landingHTMLRender();
     search();
     getLocation();
   }
   /* =============== export public methods =============== */
   return {
-    init: init
+    init: init,
+    search: search,
+    searchTerm: searchTerm,
+    searchLoc: searchLoc
+
   };
 
 }());

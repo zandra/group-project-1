@@ -12,19 +12,18 @@ var Mapi = (function () {
     const accessToken = 'pk.eyJ1IjoianlvbmdlIiwiYSI6ImNrMzFzOTJhOTAzczUzbG9iNzJkbThqNGgifQ.P8qxxnXrweFPSDAk0myObw';
 
    
-    var mymap = L.map('mapid',{ zoomControl: false }).setView([latMap, longMap], zoom);
-
+    var mymap = L.map('mapid',{ zoomControl: false }).setView([30.2672, -97.7431], 13);
     new L.Control.Zoom({ position: 'bottomright'}).addTo(mymap);
 
+
     L.tileLayer(`https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=${accessToken}`, {
-      // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
       id: 'mapbox.streets',
       accessToken: accessToken
     }).addTo(mymap);
 
     function mapMe2(arr) {
-    //  $('#mapid').css({ opacity: 0.6 });
 
     const businesses = arr.map( business => {
       return {
@@ -35,7 +34,7 @@ var Mapi = (function () {
         latitude: business.coordinates.latitude,
         longitude: business.coordinates.longitude,
         address1: business.location.address1,
-        address2: business.location.address2 || '',
+        address2: business.location.address2,
         city: business.location.city,
         state: business.location.state,
         zip_code: business.location.zip_code,
@@ -43,9 +42,7 @@ var Mapi = (function () {
         price: business.price
       }
     });
-    console.log(businesses);
-
-    const markerCoords = arr.map( business => ([business.coordinates.latitude, business.coordinates.longitude]) );
+    
     const popupMarkup = arr.map( business => {
       return `
       <span class='name'><b>${business.name}</b></span><br>
@@ -58,11 +55,6 @@ var Mapi = (function () {
       `
     });
 
-    // for (let i=0; i<arr.length; i++) {
-    //   var marker = L.marker([markerCoords[i][0], markerCoords[i][1]]).addTo(mymap);
-    //   marker.bindPopup(popupMarkup[i]).openPopup();
-    // }
-
     for (let i=0; i<arr.length; i++) {
       var marker = L.marker([businesses[i].latitude, businesses[i].longitude]).addTo(mymap);
       marker.bindPopup(popupMarkup[i]).openPopup();
@@ -71,9 +63,7 @@ var Mapi = (function () {
     mymap.on('popupopen', function() {
       $('a').on('click', function(event) {
         let selected = event.target.parentElement.firstElementChild.innerText;
-        console.log(selected);
         let myRestaurant = businesses.find(business => business.name === selected);
-        console.log(myRestaurant);
         View.viewRestaurant(myRestaurant);
         return false;
       })
@@ -87,7 +77,7 @@ var Mapi = (function () {
   /* =============== export public methods =============== */
   return {
     init: init,
-    mymap, mymap,
+    mymap: mymap,
     mapMe2: mapMe2
   };
 
