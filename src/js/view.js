@@ -8,6 +8,7 @@ var View = (function () {
   }
   /* =================== public methods ================== */
   function viewRestaurant(restaurant) {
+    $('.results').addClass('hide');
     $('.view').append(`<h2>${restaurant.name}</h2>`);
   }
 

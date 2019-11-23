@@ -23,10 +23,20 @@ var Mapi = (function () {
     function mapMe2(arr) {
     //  $('#mapid').css({ opacity: 0.6 });
 
+    const businesses = arr.map( business => {
+      return {
+        name: business.name,
+        latitude: business.coordinates.latitude,
+        longitude: business.coordinates.longitude,
+        price: business.price
+      }
+    });
+    console.log(businesses);
+
     const markerCoords = arr.map( business => ([business.coordinates.latitude, business.coordinates.longitude]) );
     const popupMarkup = arr.map( business => {
       return `
-      <b>${business.name}</b><br>
+      <span class='name'><b>${business.name}</b></span><br>
       ${business.location.address1}<br>
       ${business.location.address2 ? business.location.address2 + '<br>' : ''}
       ${business.location.city}, ${business.location.state} ${business.location.zip_code}<br>
@@ -39,24 +49,16 @@ var Mapi = (function () {
     for (let i=0; i<arr.length; i++) {
       var marker = L.marker([markerCoords[i][0], markerCoords[i][1]]).addTo(mymap);
       marker.bindPopup(popupMarkup[i]).openPopup();
-      // marker.on('click', function(e) {
-      //   var popup = e.target.getPopup();
-      //   console.log(popup);
-      //   var url="DYNAMIC_CONTENT_URL";
-      //   $.get(url).done(function(data) {
-      //       popup.setContent(data);
-      //       popup.update();
-      //   });
-      // })
     }
-    // mymap.on('popupopen', function() {
-    //   $('a').on('click', function(event, ) {
-    //     console.log(this);
-    //     console.log(event);
-    //     // View.viewRestaurant(arr[0]);
-    //     return false;
-    //   })
-    // })
+    
+    mymap.on('popupopen', function() {
+      $('a').on('click', function(event) {
+        let restaurant = event.target.parentElement.firstElementChild.innerText;
+        const selected = businesses.find(business => business.name === restaurant);
+        View.viewRestaurant(selected);
+        return false;
+      })
+    })
   }
 
   // main init method

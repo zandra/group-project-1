@@ -94,10 +94,7 @@ var Results = (function () {
 
     $('.btn').on("click", function(event){
       var priceFilter = results.filter(result => result.price === this.target.text);
-
       // trying to redraw the map here
-      // Mapi.mymap.remove();
-      // Calls.yelpBusinessSearch("coffee", "90210", priceFilter);
       });
   }
   
