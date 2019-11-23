@@ -17,15 +17,21 @@ var View = (function () {
         }
       $('.view').append(`<img src=${restaurant.image_url}>`);
       $('.view').append(`<h1 class=‘name’>${restaurant.name}</h1>`);
-      $('.view').append(`<h2><span class=‘address’>Address: ${restaurant.address1}</span>${restaurant.address2}, ${restaurant.city}, ${restaurant.state}  ${restaurant.zip_code}</h2> `);
+      $('.view').append(`<h3><span class=‘address’>${restaurant.address1}</span>${restaurant.address2}<br> ${restaurant.city}, ${restaurant.state}  ${restaurant.zip_code}</h3> `);
       $('.view').append(`<p><span class=‘phone’>Phone: ` + prettyNumber(`${restaurant.phone}`) + `</p>`);
       $('.view').append(`<p><span class=‘rating’>Rating: ${restaurant.rating}</p>`);
-      $('.view').append(`<a href=“${restaurant.url}“> Visit Our Page!</a>`);
-      $('#select-restaurant').on('click', function (event) {
-          event.preventDefault();
-          var inputRestaurant = $('#restaurant-input').val().trim();
-          searchGoodInTown(inputRestaurant);
-      });
+      $('.view').append(`<a href=“${restaurant.url}“> Visit Our Page!</a><br>`);
+      $('.view').append(`<a class="waves-effect waves-light btn" id='results-list'> \< Back to Results</a>`);
+      // $('#select-restaurant').on('click', function (event) {
+      //     event.preventDefault();
+      //     var inputRestaurant = $('#restaurant-input').val().trim();
+      //     searchGoodInTown(inputRestaurant);
+      // });
+
+      $('#results-list').on('click', function(event) {
+        event.preventDefault();
+        // Calls.yelpBusinessSearch()
+      })
   }
   
     // main init method

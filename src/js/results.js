@@ -11,6 +11,7 @@ var Results = (function () {
   
   function render() {
     $('.bg-image').addClass('hide');
+    $('.landingHTML').addClass('hide');
 
     $('#filters').append(
       `<div class="row section">
