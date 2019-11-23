@@ -1,5 +1,4 @@
 .header {
-
   height:100px;
   display: flex;
   position: relative;
@@ -29,12 +28,12 @@ ul > li {
 
 .collapsible-header {
   display: inline-block;
+  background-color: white;
 }
 
 .collapsible-body {
   background-color: white;
   position: absolute;
-  display: none
 }
 
 .bg-image {

@@ -21,7 +21,6 @@ var Mapi = (function () {
     }).addTo(mymap);
 
     function mapMe2(arr) {
-
     //  $('#mapid').css({ opacity: 0.6 });
 
     const markerCoords = arr.map( business => ([business.coordinates.latitude, business.coordinates.longitude]) );
@@ -40,15 +39,15 @@ var Mapi = (function () {
     for (let i=0; i<arr.length; i++) {
       var marker = L.marker([markerCoords[i][0], markerCoords[i][1]]).addTo(mymap);
       marker.bindPopup(popupMarkup[i]).openPopup();
-      marker.on('click', function(e) {
-        var popup = e.target.getPopup();
-        console.log(popup);
-        var url="DYNAMIC_CONTENT_URL";
-        $.get(url).done(function(data) {
-            popup.setContent(data);
-            popup.update();
-        });
-      })
+      // marker.on('click', function(e) {
+      //   var popup = e.target.getPopup();
+      //   console.log(popup);
+      //   var url="DYNAMIC_CONTENT_URL";
+      //   $.get(url).done(function(data) {
+      //       popup.setContent(data);
+      //       popup.update();
+      //   });
+      // })
     }
     // mymap.on('popupopen', function() {
     //   $('a').on('click', function(event, ) {
@@ -59,6 +58,7 @@ var Mapi = (function () {
     //   })
     // })
   }
+
   // main init method
   function init() {
     cacheDom();

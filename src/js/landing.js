@@ -49,9 +49,12 @@ var Landing = (function () {
 
     // event when user presses the 'search button'
     $('#searchButton').on('click', function (event) {
-
       event.preventDefault();
-      Calls.yelpBusinessSearch();
+      // var searchTerm = DOM.$term.val().trim();
+      // var searchLoc = DOM.$current.val().trim();
+      // console.log(searchTerm);
+      // console.log(searchLoc);
+      Calls.yelpBusinessSearch("coffee", "90210");
       // 'hide' here is a materialize class that is added with jQuery
       $('.landingHTML').addClass('hide');
 

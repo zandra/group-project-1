@@ -14,7 +14,7 @@ var Calls = (function () {
     function cacheDom() {
     }
 
-    function yelpBusinessSearch(searchTerm, searchLocation) {
+    function yelpBusinessSearch(searchTerm, searchLocation, options = { }) {
       var yelp_business_search_url = 'https://api.yelp.com/v3/businesses/search';
       var auth1 = token;
       // let searchTerm = 'coffee'
@@ -25,7 +25,8 @@ var Calls = (function () {
         url:  'https://cors-anywhere.herokuapp.com/' + yelp_business_search_url,
         data: {
           term: searchTerm,
-          location: searchLocation
+          location: searchLocation,
+          options: options
           // longitude: longitude,
           // latitude: latitude
         },
@@ -36,6 +37,8 @@ var Calls = (function () {
         method: 'GET'
       }).then(function(response){
         Mapi.mapMe2(response.businesses);
+        Results.render();
+        Results.filters(response.businesses)
         $('#mapid').css({ opacity: 1 });
       });
     }
